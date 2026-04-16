@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dinesh Karthick B | Premium Portfolio</title>
+  <meta name="description" content="Interactive premium portfolio of Dinesh Karthick B - fresher in technology and engineering." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Satoshi', sans-serif;
+    }
+
+    /* Hide scrollbar */
+    html, body {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow: auto;
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Smooth scroll container */
+    .smooth-scroll {
+      scroll-behavior: smooth;
+    }
+
+    /* Horizontal scroll - hide scrollbar */
+    .horizontal-scroll {
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .horizontal-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Glass effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .glass:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
+    }
+
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #8B5CF6, #00E5FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Fade up animation */
+    @keyframes fadeUpScroll {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUpScroll 0.8s ease forwards;
+    }
+
+    /* Stagger delays */
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.2s; }
+    .fade-up-3 { animation-delay: 0.3s; }
+    .fade-up-4 { animation-delay: 0.4s; }
+    .fade-up-5 { animation-delay: 0.5s; }
+    .fade-up-6 { animation-delay: 0.6s; }
+
+    /* Glow effect on hover */
+    .glow-hover {
+      transition: all 0.3s ease;
+    }
+
+    .glow-hover:hover {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Text truncate for horizontal scroll */
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 1rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      padding: 1.5rem;
+      min-width: max-content;
+      width: 20rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);
+    }
+
+    /* Orb animation */
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(40px, -40px); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, 30px); }
+    }
+
+    .orb-1 {
+      animation: float1 20s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      animation: float2 15s ease-in-out infinite;
+    }
+
+    /* Navbar floating effect */
+    nav {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Sticky section layout */
+    .sticky-content {
+      position: sticky;
+      top: 50%;
+      transform: translateY(-50%);
+      height: fit-content;
+    }
+
+    /* Smooth scroll for sections */
+    html {
+      scroll-behavior: smooth;
+    }
+
+  </style>
+</head>
+<body class="bg-black text-white" style="background: #0A0A0A;">
+  <!-- Animated background orbs -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl orb-1"></div>
+    <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-cyan-500/15 rounded-full blur-3xl orb-2"></div>
+  </div>
+
+  <!-- Floating Navbar -->
+  <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 float-animation">
+    <div class="glass px-8 py-4 rounded-full">
+      <ul class="flex gap-8 text-sm font-medium">
+        <li><a href="#about" class="hover:text-cyan-400 transition duration-300">About</a></li>
+        <li><a href="#skills" class="hover:text-cyan-400 transition duration-300">Skills</a></li>
+        <li><a href="#projects" class="hover:text-cyan-400 transition duration-300">Projects</a></li>
+        <li><a href="#internship" class="hover:text-cyan-400 transition duration-300">Internship</a></li>
+        <li><a href="#contact" class="hover:text-cyan-400 transition duration-300">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="relative z-10">
+    <!-- Hero Section - Centered Glass -->
+    <section class="min-h-screen flex items-center justify-center px-6 md:px-20 pt-32 pb-20">
+      <div class="max-w-4xl w-full text-center">
+        <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 fade-up fade-up-1" style="line-height: 1.08;">
+          Learning, Building, and Growing<br/>
+          in the World of <span class="gradient-text">Technology</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-6 fade-up fade-up-2">
+          IT Graduate | Problem Solver | Tech Enthusiast | Adaptable Professional
+        </p>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-3">
+          Passionate IT fresher with a strong foundation in software systems, problem-solving, and emerging technologies.
+          Interested in contributing to innovative and impactful solutions through continuous learning and adaptability.
+        </p>
+        <div class="flex gap-4 justify-center flex-wrap fade-up fade-up-4">
+          <a href="#" class="glass px-8 py-4 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+            <i class="fas fa-file-arrow-down"></i> Download Resume
+          </a>
+          <a href="mailto:dineshkarthickbca@gmail.com" class="glass px-8 py-4 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+            <i class="fas fa-paper-plane"></i> Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section (Split Layout) -->
+    <section class="py-24 px-6 md:px-20 relative" id="about">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <!-- Left: Text -->
+        <div class="fade-up fade-up-2">
+          <h2 class="text-5xl md:text-6xl font-black gradient-text mb-6">About</h2>
+          <p class="text-gray-400 text-lg leading-relaxed mb-6">
+            I am an IT graduate with a solid foundation in computer science fundamentals and hands-on experience in building practical, real-world solutions. I enjoy exploring multiple areas of the IT ecosystem, including software systems, data handling, and cloud technologies.
+          </p>
+          <p class="text-gray-400 text-lg leading-relaxed mb-8">
+            I am driven by problem-solving and a strong curiosity to understand how systems work behind the scenes. With a structured approach and adaptability to new tools and environments, I focus on continuously improving my skills while delivering efficient and meaningful solutions.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span class="text-gray-300">BCA Final Year | Thiagarajar College</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span class="text-gray-300">4+ Academic & Practical Projects</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span class="text-gray-300">4+ Industry Certifications</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-cyan-400 font-bold">✓</span>
+              <span class="text-gray-300">10+ Technologies Explored</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Glass Card with Stats -->
+        <div class="glass p-8 md:p-10 rounded-3xl h-fit fade-up fade-up-3 glow-hover">
+          <div class="space-y-8">
+            <div>
+              <div class="text-5xl font-black gradient-text mb-2">4+</div>
+              <p class="text-gray-400 font-medium">Production Projects</p>
+              <p class="text-sm text-gray-500 mt-1">AI, Web, Mobile & DevOps</p>
+            </div>
+            <div>
+              <div class="text-5xl font-black gradient-text mb-2">20+</div>
+              <p class="text-gray-400 font-medium">Technologies</p>
+              <p class="text-sm text-gray-500 mt-1">Languages, Frameworks, Tools</p>
+            </div>
+            <div>
+              <div class="text-5xl font-black gradient-text mb-2">7.6/10</div>
+              <p class="text-gray-400 font-medium">CGPA (5th Sem)</p>
+              <p class="text-sm text-gray-500 mt-1">BCA Final Year</p>
+            </div>
+            <div class="pt-6 border-t border-white/10">
+              <p class="text-sm text-gray-300">📍 <strong>Thiruppachetti, Sivagangai District, Tamil Nadu</strong></p>
+              <p class="text-sm text-gray-300 mt-2">🎯 <strong>Open to All Tech Roles</strong></p>
+              <p class="text-sm text-gray-300 mt-2">✨ <strong>Fresher · BCA Student</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section (Structured & Neutral) -->
+    <section class="py-24 px-6 md:px-20 relative" id="skills">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Skills</h2>
+        <p class="text-gray-400 text-lg mb-16 fade-up fade-up-2">Structured capabilities across technical, platform, and soft-skill areas</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-3">
+            <div class="text-4xl mb-4">🧠</div>
+            <h3 class="font-black text-2xl mb-5 text-white">Technical Skills</h3>
+            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
+              <li><span class="text-cyan-400">Programming Basics:</span> Java / Python / C</li>
+              <li><span class="text-cyan-400">Web Fundamentals:</span> HTML, CSS, JavaScript</li>
+              <li><span class="text-cyan-400">Databases:</span> MySQL / MongoDB</li>
+              <li><span class="text-cyan-400">Tools:</span> Git, Docker, CI/CD, Postman</li>
+              <li><span class="text-cyan-400">Cloud Basics:</span> Microsoft Azure</li>
+              <li><span class="text-cyan-400">Networking:</span>  DNS, IP Addressing, HTTP/HTTPS</li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-4">
+            <div class="text-4xl mb-4">⚙️</div>
+            <h3 class="font-black text-2xl mb-5 text-white">Tools & Platforms</h3>
+            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
+              <li><span class="text-cyan-400">Version Control:</span> GitHub</li>
+              <li><span class="text-cyan-400">IDEs:</span> VS Code, IntelliJ</li>
+              <li><span class="text-cyan-400">Productivity:</span> Excel, Google Workspace</li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-5">
+            <div class="text-4xl mb-4">🤝</div>
+            <h3 class="font-black text-2xl mb-5 text-white">Soft Skills</h3>
+            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
+              <li>Problem Solving</li>
+              <li>Communication</li>
+              <li>Team Collaboration</li>
+              <li>Quick Learner</li>
+              <li>Adaptability</li>
+              <li>Time Management</li>
+              <li>Debugging & Troubleshooting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="py-24 px-6 md:px-20 relative" id="projects">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Projects</h2>
+        <p class="text-gray-400 text-lg mb-16 fade-up fade-up-2">Hover on a project card to view more details</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-purple-400/70 hover:shadow-purple-500/30 hover:scale-105 transition duration-300 fade-up fade-up-3">
+            <h3 class="text-2xl font-black text-white mb-2">Smart Resume Analyzer</h3>
+            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">AI-powered platform that extracts skills from resumes and generates interview questions.</p>
+            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+              Manual resume screening is time-consuming → built an AI-powered system to automatically analyze resumes and generate insights with interview guidance.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Node.js</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">React + Vite</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">REST APIs</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">MongoDB</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">AI</span>
+            </div>
+          </div>
+
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-blue-400/70 hover:shadow-blue-500/30 hover:scale-105 transition duration-300 fade-up fade-up-5">
+            <h3 class="text-2xl font-black text-white mb-2">Resort CRM System</h3>
+            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">Booking management CRM with API validation, testing workflows, and deployment support.</p>
+            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+              Inconsistent deployment environments cause system issues → implemented containerization and CI/CD workflows for reliable and streamlined deployments.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Microsoft Azure</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Postman</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">CI / CD (Github Actions)</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Git, GitHub</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Docker</span>
+            </div>
+          </div>
+
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-cyan-400/70 hover:shadow-cyan-500/30 hover:scale-105 transition duration-300 fade-up fade-up-4">
+            <h3 class="text-2xl font-black text-white mb-2">AI Customer Support Multi-Agent System</h3>
+            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">Multi-agent support workflow for query classification, escalation, and response handling.</p>
+            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+              Handling large volumes of customer queries is inefficient → developed a multi-agent AI system for automated routing, response generation, and issue resolution.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Multi-Agent</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">RAG</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">FAISS</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Gemini API</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Python</span>
+            </div>
+          </div>
+
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-emerald-400/70 hover:shadow-emerald-500/30 hover:scale-105 transition duration-300 fade-up fade-up-6">
+            <h3 class="text-2xl font-black text-white mb-2">Currency Converter</h3>
+            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">Android app for real-time conversion with a clean UI and stable calculations.</p>
+            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+              Manual currency conversion is slow and error-prone → created a mobile app for quick and accurate real-time currency calculations.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Android Studio</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">UI Testing</span>
+              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Java</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Internship Section -->
+    <section class="py-24 px-6 md:px-20 relative" id="internship">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Internship</h2>
+        <p class="text-gray-400 text-lg mb-12 fade-up fade-up-2">Professional exposure and practical learning experience</p>
+
+        <div class="glass p-8 md:p-10 rounded-2xl shadow-xl border border-white/20 glow-hover fade-up fade-up-3">
+          <h3 class="text-2xl md:text-3xl font-black text-white mb-2">Summer Intern - Accenture</h3>
+          <p class="text-gray-300 mb-6">May 2025 - July 2025 | Hybrid (8 Weeks)</p>
+
+          <ul class="space-y-3 text-gray-300 leading-relaxed">
+            <li>- Gained exposure to IT workflows and cloud computing fundamentals.</li>
+            <li>- Learned basics of Microsoft Azure services and deployment models.</li>
+            <li>- Participated in guided sessions, team projects, and client-simulation activities.</li>
+            <li>- Built professional discipline in customer-focused IT environments.</li>
+            <li>- Certificate of Completion awarded by Accenture.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-24 px-6 md:px-20 relative" id="certifications">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Certifications</h2>
+        <p class="text-gray-400 text-lg mb-12 fade-up fade-up-2">Validated learning in web, cloud, database, and analytics domains</p>
+
+        <div class="glass p-8 md:p-10 rounded-2xl shadow-xl border border-white/20 glow-hover fade-up fade-up-3">
+          <ul class="space-y-3 text-gray-300 leading-relaxed">
+            <li>- Web Development - IBM (Coursera)</li>
+            <li>- Cloud Computing Basics - IBM (Coursera)</li>
+            <li>- MongoDB Basics</li>
+            <li>- Data Analytics Simulation - Deloitte (Forage)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section (Minimal Glass) -->
+    <section class="py-24 px-6 md:px-20 relative" id="contact">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-6 fade-up fade-up-1">Let's Connect</h2>
+        
+        <div class="glass p-12 rounded-3xl glow-hover fade-up fade-up-2">
+          <p class="text-gray-400 text-lg mb-10">
+            I'm always interested in new opportunities and collaborations. Reach out via any of these channels.
+          </p>
+
+          <div class="flex gap-6 justify-center flex-wrap mb-8">
+            <a href="mailto:dineshkarthickbca@gmail.com" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+              <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://github.com/dineshkarthick-bca" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/dinesh-karthick-b-1j9u0l3y/" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+
+          <div class="pt-8 border-t border-white/10 space-y-2 text-sm text-gray-400">
+            <p><strong>📍 Location:</strong>Thiruppachetti, Sivagangai Dist, Tamil Nadu </p>
+            <p><strong>🎓 Status:</strong> BCA Final Year Student | Open To Work</p>
+            <p><strong>🌟 Available:</strong> For all Technology roles and Support Roles</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 text-center text-gray-600 text-sm border-t border-white/5 mt-20">
+      <p>© 2026 Dinesh Karthick B · BCA Graduate ·<span class="text-cyan-400"></span> Open To Work</p>
+    </footer>
+  </div>
+
+  <!-- Lenis Smooth Scroll -->
+  <script>
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      smoothTouch: false,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          lenis.scrollTo(target, {
+            offset: -100,
+            duration: 1.2
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for fade-up animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = 'fadeUpScroll 0.8s ease forwards';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-up elements
+    document.querySelectorAll('[class*="fade-up"]').forEach(el => {
+      observer.observe(el);
+    });
+
+  </script>
+</body>
+</html>
