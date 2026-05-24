@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
+    /* Base typography for the whole page */
     * {
       font-family: 'Inter', sans-serif;
     }
@@ -20,7 +21,7 @@
       font-family: 'Satoshi', sans-serif;
     }
 
-    /* Hide scrollbar */
+    /* Hide the default browser scrollbar for a cleaner look */
     html, body {
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -32,12 +33,12 @@
       display: none;
     }
 
-    /* Smooth scroll container */
+    /* Enable smooth scrolling on the page */
     .smooth-scroll {
       scroll-behavior: smooth;
     }
 
-    /* Horizontal scroll - hide scrollbar */
+    /* Hide horizontal scrollbar for scrollable rows */
     .horizontal-scroll {
       scroll-behavior: smooth;
       scrollbar-width: none;
@@ -48,7 +49,7 @@
       display: none;
     }
 
-    /* Glass effect */
+    /* Shared glass card effect used throughout the site */
     .glass {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
@@ -65,7 +66,7 @@
       box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
     }
 
-    /* Gradient text */
+    /* Cyan-purple gradient text highlight */
     .gradient-text {
       background: linear-gradient(135deg, #8B5CF6, #00E5FF);
       -webkit-background-clip: text;
@@ -73,7 +74,7 @@
       background-clip: text;
     }
 
-    /* Floating animation */
+    /* Floating motion used by background orbs */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
@@ -83,7 +84,7 @@
       animation: float 4s ease-in-out infinite;
     }
 
-    /* Fade up animation */
+    /* Fade-up animation for cards and sections */
     @keyframes fadeUpScroll {
       from {
         opacity: 0;
@@ -101,7 +102,7 @@
       animation: fadeUpScroll 0.8s ease forwards;
     }
 
-    /* Stagger delays */
+    /* Staggered delays so elements appear one after another */
     .fade-up-1 { animation-delay: 0.1s; }
     .fade-up-2 { animation-delay: 0.2s; }
     .fade-up-3 { animation-delay: 0.3s; }
@@ -109,7 +110,7 @@
     .fade-up-5 { animation-delay: 0.5s; }
     .fade-up-6 { animation-delay: 0.6s; }
 
-    /* Glow effect on hover */
+    /* Glow effect used on hoverable cards */
     .glow-hover {
       transition: all 0.3s ease;
     }
@@ -118,7 +119,251 @@
       box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
     }
 
-    /* Text truncate for horizontal scroll */
+    @keyframes rotation_481 {
+      0% {
+        transform: rotateZ(0deg);
+      }
+
+      100% {
+        transform: rotateZ(360deg);
+      }
+    }
+
+    /* Layout for the skills cards */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1.25rem;
+      justify-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .skills-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+    }
+
+    /* Flip-card container */
+    .skill-card {
+      overflow: visible;
+      width: 100%;
+      max-width: 280px;
+      height: 380px;
+      perspective: 1000px;
+    }
+
+    /* 3D wrapper that flips on hover */
+    .skill-content {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 300ms;
+      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.9);
+      border-radius: 24px;
+      position: relative;
+    }
+
+    .skill-card:hover .skill-content,
+    .skill-card:focus-within .skill-content {
+      transform: rotateY(180deg);
+    }
+
+    /* Front and back faces of each skill card */
+    .skill-front,
+    .skill-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .skill-back {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background-color: #151515;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Rotating light border effect on the card back */
+    .skill-back::before {
+      position: absolute;
+      content: ' ';
+      display: block;
+      width: 160px;
+      height: 160%;
+      background: linear-gradient(90deg, transparent, var(--accent-strong), var(--accent-strong), var(--accent-strong), var(--accent-strong), transparent);
+      animation: rotation_481 5000ms infinite linear;
+      opacity: 0.95;
+    }
+
+    /* Content placed above the animated border */
+    .skill-back-content {
+      position: absolute;
+      width: 99%;
+      height: 99%;
+      background-color: #151515;
+      border-radius: 22px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      padding: 1.75rem;
+      z-index: 1;
+    }
+
+    .skill-back-content strong {
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Front side of the flip card */
+    .skill-front {
+      transform: rotateY(180deg);
+      color: white;
+      background: linear-gradient(180deg, rgba(21, 21, 21, 0.98) 0%, rgba(21, 21, 21, 0.94) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .skill-front .front-content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .skill-badge {
+      background-color: rgba(0, 0, 0, 0.35);
+      padding: 5px 12px;
+      border-radius: 10px;
+      backdrop-filter: blur(2px);
+      width: fit-content;
+      font-size: 12.6px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Large info box on the front side */
+    .skill-description {
+      box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.55);
+      width: 100%;
+      min-height: 290px;
+      padding: 34px 26px;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .skill-title {
+      font-size: 14.7px;
+      max-width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .skill-title p {
+      width: 86%;
+      margin: 0;
+    }
+
+    .skill-footer {
+      color: rgba(255, 255, 255, 0.62);
+      margin-top: 6px;
+      font-size: 12.6px;
+      line-height: 1.5;
+    }
+
+    .skill-figure {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      overflow: hidden;
+    }
+
+    .skill-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      position: relative;
+      filter: blur(15px);
+      animation: floating 2600ms infinite linear;
+      opacity: 0.92;
+    }
+
+    .skill-circle.bottom {
+      background-color: var(--accent-strong);
+      left: 50px;
+      top: 0px;
+      width: 150px;
+      height: 150px;
+      animation-delay: -800ms;
+    }
+
+    .skill-circle.right {
+      background-color: var(--accent);
+      left: 160px;
+      top: -80px;
+      width: 30px;
+      height: 30px;
+      animation-delay: -1800ms;
+    }
+
+    .skill-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 1.6rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .skill-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+    }
+
+    .skill-chip {
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Project cards shown in the projects section */
     .project-card {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(12px);
@@ -138,7 +383,7 @@
       box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);
     }
 
-    /* Orb animation */
+    /* Slow moving background orb animations */
     @keyframes float1 {
       0%, 100% { transform: translate(0, 0); }
       50% { transform: translate(40px, -40px); }
@@ -157,7 +402,7 @@
       animation: float2 15s ease-in-out infinite;
     }
 
-    /* Sticky section layout */
+    /* Helper for content that should stay centered while scrolling */
     .sticky-content {
       position: sticky;
       top: 50%;
@@ -165,12 +410,12 @@
       height: fit-content;
     }
 
-    /* Smooth scroll for sections */
+    /* Enable native smooth scrolling for anchor jumps */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Navbar scrollbar hide */
+    /* Utility to hide scrollbars in custom containers */
     .scrollbar-hide {
       scrollbar-width: none;
       -ms-overflow-style: none;
@@ -180,31 +425,207 @@
       display: none;
     }
 
+    /* Navbar links get an underline when their section is active */
+    .nav-scroll-link {
+      position: relative;
+      border-radius: 0.5rem;
+    }
+
+    .nav-scroll-link.active {
+      color: #00E5FF;
+    }
+
+    .nav-scroll-link.active::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 1px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #00E5FF, transparent);
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.65);
+    }
+
+    /* Two-part layout for the About section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-layout {
+        grid-template-columns: 280px minmax(0, 1fr);
+      }
+    }
+
+    /* Circular avatar badge on the left side of About */
+    .about-avatar {
+      width: min(280px, 100%);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      padding: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(0, 229, 255, 0.45), rgba(139, 92, 246, 0.16) 42%, rgba(10, 10, 10, 0.95) 78%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Inner circle content for the avatar */
+    .about-avatar-core {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #111111, #1b1b1b);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .about-avatar-core span {
+      font-size: 3.25rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .about-avatar-core p {
+      margin-top: 0.5rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* Extra information cards below the About text */
+    .about-info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .about-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* Small info cards inside About */
+    .about-info-card {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 1.5rem;
+      padding: 1.75rem;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+      transition: transform 300ms ease-in, box-shadow 300ms ease-in, border-color 300ms ease-in;
+    }
+
+    .about-info-card:hover {
+      transform: rotateZ(1deg) rotateY(10deg) scale(1.03);
+      box-shadow: 0 3rem 2rem rgba(17, 17, 17, 0.75);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Animated border light that matches the effect you shared */
+    .about-info-card::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      border-radius: inherit;
+      background: linear-gradient(
+        115deg,
+        rgba(0, 0, 0, 0.33) 12%,
+        rgba(255, 255, 255, 0.33) 27%,
+        rgba(255, 255, 255, 0.33) 31%,
+        rgba(0, 0, 0, 0.33) 52%
+      );
+      opacity: 0;
+      transform: translate(-25%, -15%);
+      transition: opacity 300ms ease-in;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-info-card:hover::before {
+      opacity: 0.15;
+      animation: aboutRotate 4s linear infinite;
+    }
+
+    .about-info-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-info-card::after {
+      content: "";
+      position: absolute;
+      inset: 0.35rem;
+      border-radius: calc(1.5rem - 0.35rem);
+      background:
+        radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 8px, transparent 8px) 0% 0%/13px 13px no-repeat,
+        radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 8px, transparent 8px) 100% 0%/13px 13px no-repeat,
+        radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 8px, transparent 8px) 0% 100%/13px 13px no-repeat,
+        radial-gradient(circle at 0 0, #ffffff 0, #ffffff 8px, transparent 8px) 100% 100%/13px 13px no-repeat,
+        linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 10px) calc(100% - 26px) no-repeat,
+        linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 26px) calc(100% - 10px) no-repeat,
+        linear-gradient(
+          135deg,
+          rgba(3, 3, 3, 0.5) 0%,
+          transparent 22%,
+          transparent 47%,
+          transparent 73%,
+          rgba(0, 0, 0, 0.5) 100%
+        );
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes aboutRotate {
+      0% {
+        transform: translate(-25%, -15%) rotate(0deg);
+      }
+
+      20% {
+        transform: translate(25%, 15%) rotate(72deg);
+      }
+
+      100% {
+        transform: translate(25%, 15%) rotate(360deg);
+      }
+    }
+
   </style>
 </head>
 <body class="bg-black text-white" style="background: #0A0A0A;">
-  <!-- Animated background orbs -->
+  <!-- Decorative background orbs -->
   <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
     <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl orb-1"></div>
     <div class="absolute -bottom-40 -left-40 w-72 h-72 bg-cyan-500/15 rounded-full blur-3xl orb-2"></div>
   </div>
 
-  <!-- Floating Navbar -->
+  <!-- Fixed navbar that stays visible while scrolling -->
   <nav class="fixed top-2 sm:top-3 md:top-6 left-1/2 transform -translate-x-1/2 z-50 w-[calc(100%-1rem)] sm:w-auto max-w-[calc(100%-1rem)]">
-    <div class="glass px-2 sm:px-4 md:px-6 lg:px-8 py-2 sm:py-2.5 md:py-4 rounded-full flex items-center gap-2 sm:gap-3 md:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide" style="overflow-y: hidden;">
-      <a href="#" class="text-xs sm:text-xs md:text-sm lg:text-base font-bold gradient-text whitespace-nowrap flex-shrink-0">Dinesh Karthick B</a>
-      <ul class="flex gap-1 sm:gap-2 md:gap-6 lg:gap-8 text-xs sm:text-xs md:text-sm lg:text-base font-medium whitespace-nowrap flex-shrink-0">
-        <li><a href="#about" class="px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2 inline-block rounded hover:text-cyan-400 transition duration-300">About</a></li>
-        <li><a href="#skills" class="px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2 inline-block rounded hover:text-cyan-400 transition duration-300">Skills</a></li>
-        <li><a href="#projects" class="px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2 inline-block rounded hover:text-cyan-400 transition duration-300">Projects</a></li>
-        <li><a href="#internship" class="px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2 inline-block rounded hover:text-cyan-400 transition duration-300">Internship</a></li>
-        <li><a href="#contact" class="px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2 inline-block rounded hover:text-cyan-400 transition duration-300">Contact</a></li>
+    <div class="glass px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 md:gap-4 lg:gap-5 overflow-x-auto scrollbar-hide" style="overflow-y: hidden;">
+      <a href="#" class="text-xs sm:text-xs md:text-sm lg:text-sm font-bold gradient-text whitespace-nowrap flex-shrink-0">Dinesh Karthick B</a>
+      <ul class="flex gap-1 sm:gap-1.5 md:gap-4 lg:gap-5 text-xs sm:text-xs md:text-sm lg:text-sm font-medium whitespace-nowrap flex-shrink-0">
+        <li><a href="#about" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">About</a></li>
+        <li><a href="#skills" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">Skills</a></li>
+        <li><a href="#projects" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">Projects</a></li>
+        <li><a href="#internship" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">Internship</a></li>
       </ul>
     </div>
   </nav>
 
   <div class="relative z-10">
-    <!-- Hero Section - Centered Glass -->
+    <!-- Hero section: short intro and resume button -->
     <section class="min-h-screen flex items-center justify-center px-6 md:px-20 pt-32 pb-20">
       <div class="max-w-4xl w-full text-center">
         <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 fade-up fade-up-1" style="line-height: 1.08;">
@@ -225,136 +646,224 @@
       </div>
     </section>
 
-    <!-- About Section (Split Layout) -->
+    <!-- About section: avatar, intro text, and highlight cards -->
     <section class="py-24 px-6 md:px-20 relative" id="about">
-      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <!-- Left: Text -->
-        <div class="fade-up fade-up-2">
-          <h2 class="text-5xl md:text-6xl font-black gradient-text mb-6">About</h2>
-          <p class="text-gray-400 text-lg leading-relaxed mb-6">
-            I am an IT graduate with a solid foundation in computer science fundamentals and hands-on experience in building practical, real-world solutions. I enjoy exploring multiple areas of the IT ecosystem, including software systems, data handling, and cloud technologies.
-          </p>
-          <p class="text-gray-400 text-lg leading-relaxed mb-8">
-            I am driven by problem-solving and a strong curiosity to understand how systems work behind the scenes. With a structured approach and adaptability to new tools and environments, I focus on continuously improving my skills while delivering efficient and meaningful solutions.
-          </p>
-          <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <span class="text-cyan-400 font-bold">✓</span>
-              <span class="text-gray-300">BCA Final Year | Thiagarajar College</span>
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-16 fade-up fade-up-1">
+          <h2 class="text-5xl md:text-6xl font-black gradient-text mb-5">About Me</h2>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">Passionate about creating practical digital solutions with clean thinking, curiosity, and continuous learning.</p>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-avatar fade-up fade-up-2">
+            <div class="about-avatar-core">
+              <span class="gradient-text">DK</span>
+              <p>BCA Final Year</p>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="text-cyan-400 font-bold">✓</span>
-              <span class="text-gray-300">4+ Academic & Practical Projects</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-cyan-400 font-bold">✓</span>
-              <span class="text-gray-300">4+ Industry Certifications</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-cyan-400 font-bold">✓</span>
-              <span class="text-gray-300">10+ Technologies Explored</span>
-            </div>
+          </div>
+
+          <div class="fade-up fade-up-3">
+            <p class="text-gray-400 text-lg leading-relaxed mb-6">
+              I am an IT graduate with a solid foundation in computer science fundamentals and hands-on experience in building practical, real-world solutions. I enjoy exploring multiple areas of the IT ecosystem, including software systems, data handling, and cloud technologies.
+            </p>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              I am driven by problem-solving and a strong curiosity to understand how systems work behind the scenes. With a structured approach and adaptability to new tools and environments, I focus on continuously improving my skills while delivering efficient and meaningful solutions.
+            </p>
           </div>
         </div>
 
-        <!-- Right: Glass Card with Stats -->
-        <div class="glass p-8 md:p-10 rounded-3xl h-fit fade-up fade-up-3 glow-hover">
-          <div class="space-y-8">
-            <div>
-              <div class="text-5xl font-black gradient-text mb-2">4+</div>
-              <p class="text-gray-400 font-medium">Production Projects</p>
-              <p class="text-sm text-gray-500 mt-1">AI, Web, Mobile & DevOps</p>
+        <div class="about-info-grid">
+          <div class="about-info-card fade-up fade-up-4">
+            <h3 class="text-2xl font-black text-white mb-5">Key Highlights</h3>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <span class="text-cyan-400 font-bold">✓</span>
+                <span class="text-gray-300">BCA Final Year | Thiagarajar College</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-cyan-400 font-bold">✓</span>
+                <span class="text-gray-300">4+ Academic & Practical Projects</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-cyan-400 font-bold">✓</span>
+                <span class="text-gray-300">4+ Industry Certifications</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-cyan-400 font-bold">✓</span>
+                <span class="text-gray-300">10+ Technologies Explored</span>
+              </div>
             </div>
-            <div>
-              <div class="text-5xl font-black gradient-text mb-2">20+</div>
-              <p class="text-gray-400 font-medium">Technologies</p>
-              <p class="text-sm text-gray-500 mt-1">Languages, Frameworks, Tools</p>
-            </div>
-            <div>
-              <div class="text-5xl font-black gradient-text mb-2">7.6/10</div>
-              <p class="text-gray-400 font-medium">CGPA (5th Sem)</p>
-              <p class="text-sm text-gray-500 mt-1">Bachelor of Computer Applications (BCA)</p>
-              <p class="text-sm text-gray-500 mt-1">Thiagarajar College, Madurai · 2023 – 2026</p>
-            </div>
-            <div class="pt-6 border-t border-white/10">
-              <p class="text-sm text-gray-300">📍 <strong>Pan India</strong></p>
-              <p class="text-sm text-gray-300 mt-2">🎯 <strong>Available for Technical and IT Operations roles</strong></p>
-              <p class="text-sm text-gray-300 mt-2">✨ <strong>Fresher · BCA Student</strong></p>
+          </div>
+
+          <div class="about-info-card fade-up fade-up-5">
+            <h3 class="text-2xl font-black text-white mb-5">Professional Status</h3>
+            <div class="space-y-3 text-gray-300">
+              <p>📍 <strong>Location:</strong> Open to Work Across Pan India</p>
+              <p>🎓 <strong>Status:</strong> BCA Final Year Student</p>
+              <p>🌟 <strong>Available:</strong> Open to opportunities in IT, Technical, and Operations roles</p>
+              <p>✨ <strong>Fresher · BCA Student</strong></p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section (Structured & Neutral) -->
+    <!-- Skills section: flip cards with detailed skill lists -->
     <section class="py-24 px-6 md:px-20 relative" id="skills">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Skills</h2>
-        <p class="text-gray-400 text-lg mb-16 fade-up fade-up-2">Structured capabilities across technical, platform, and soft-skill areas</p>
+        <p class="text-gray-400 text-lg mb-16 fade-up fade-up-2">Hover each card to flip into the detailed skill set</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
-          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-3">
-            <div class="text-4xl mb-4">🧠</div>
-            <h3 class="font-black text-2xl mb-5 text-white">Technical Skills</h3>
-            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <li><span class="text-cyan-400">Programming Basics:</span> Java / Python / C</li>
-              <li><span class="text-cyan-400">Web Fundamentals:</span> HTML, CSS, JavaScript</li>
-              <li><span class="text-cyan-400">Databases:</span> MySQL / MongoDB</li>
-              <li><span class="text-cyan-400">Tools:</span> Git, Docker, CI/CD, Postman</li>
-              <li><span class="text-cyan-400">Cloud Basics:</span> Microsoft Azure</li>
-              <li><span class="text-cyan-400">Networking:</span>  DNS, IP Addressing, HTTP/HTTPS</li>
-            </ul>
+        <div class="skills-grid">
+          <div class="skill-card fade-up fade-up-3" style="--accent:#00E5FF; --accent-strong:#8B5CF6;">
+            <div class="skill-content">
+              <div class="skill-back">
+                <div class="skill-back-content">
+                  <div class="skill-icon">🧠</div>
+                  <strong>Technical Skills</strong>
+                  <p class="text-gray-400 text-sm">Hover Here</p>
+                </div>
+              </div>
+              <div class="skill-front">
+                <div class="skill-figure">
+                  <div class="skill-circle"></div>
+                  <div class="skill-circle bottom"></div>
+                  <div class="skill-circle right"></div>
+                </div>
+                <div class="front-content">
+                  <small class="skill-badge">Hover Here</small>
+                  <div class="skill-description">
+                    <div class="skill-title">
+                      <p><strong>Technical Skills</strong></p>
+                      <i class="fa-solid fa-code" style="color: var(--accent);"></i>
+                    </div>
+                    <p class="skill-footer">Java, Python, C, HTML, CSS, JavaScript, MySQL, MongoDB, Git, Docker, CI/CD, Postman, Azure, DNS, IP addressing, HTTP/HTTPS.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-4">
-            <div class="text-4xl mb-4">🤖</div>
-            <h3 class="font-black text-2xl mb-5 text-white">AI/ML</h3>
-            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <li><span class="text-cyan-400">LLM Integration:</span> Gemini API</li>
-              <li><span class="text-cyan-400">RAG:</span> Retrieval-Augmented Generation</li>
-              <li><span class="text-cyan-400">Vector Databases:</span> FAISS</li>
-            </ul>
+          <div class="skill-card fade-up fade-up-4" style="--accent:#A78BFA; --accent-strong:#EC4899;">
+            <div class="skill-content">
+              <div class="skill-back">
+                <div class="skill-back-content">
+                  <div class="skill-icon">🤖</div>
+                  <strong>AI / ML</strong>
+                  <p class="text-gray-400 text-sm">Hover Here</p>
+                </div>
+              </div>
+              <div class="skill-front">
+                <div class="skill-figure">
+                  <div class="skill-circle"></div>
+                  <div class="skill-circle bottom"></div>
+                  <div class="skill-circle right"></div>
+                </div>
+                <div class="front-content">
+                  <small class="skill-badge">Hover Here</small>
+                  <div class="skill-description">
+                    <div class="skill-title">
+                      <p><strong>AI / ML</strong></p>
+                      <i class="fa-solid fa-robot" style="color: var(--accent);"></i>
+                    </div>
+                    <p class="skill-footer">Gemini API, RAG workflows, and FAISS for semantic retrieval and AI-powered automation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-5">
-            <div class="text-4xl mb-4">⚙️</div>
-            <h3 class="font-black text-2xl mb-5 text-white">Tools & Platforms</h3>
-            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <li><span class="text-cyan-400">Version Control:</span> GitHub</li>
-              <li><span class="text-cyan-400">IDEs:</span> VS Code, IntelliJ</li>
-              <li><span class="text-cyan-400">Productivity:</span> Excel, Google Workspace</li>
-            </ul>
+          <div class="skill-card fade-up fade-up-5" style="--accent:#FBBF24; --accent-strong:#FB7185;">
+            <div class="skill-content">
+              <div class="skill-back">
+                <div class="skill-back-content">
+                  <div class="skill-icon">⚙️</div>
+                  <strong>Tools & Platforms</strong>
+                  <p class="text-gray-400 text-sm">Hover Here</p>
+                </div>
+              </div>
+              <div class="skill-front">
+                <div class="skill-figure">
+                  <div class="skill-circle"></div>
+                  <div class="skill-circle bottom"></div>
+                  <div class="skill-circle right"></div>
+                </div>
+                <div class="front-content">
+                  <small class="skill-badge">Hover Here</small>
+                  <div class="skill-description">
+                    <div class="skill-title">
+                      <p><strong>Tools & Platforms</strong></p>
+                      <i class="fa-solid fa-gears" style="color: var(--accent);"></i>
+                    </div>
+                    <p class="skill-footer">GitHub, VS Code, IntelliJ, Excel, and Google Workspace for building and organizing work efficiently.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-6">
-            <div class="text-4xl mb-4">🤝</div>
-            <h3 class="font-black text-2xl mb-5 text-white">Soft Skills</h3>
-            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <li>Problem Solving</li>
-              <li>Communication</li>
-              <li>Team Collaboration</li>
-              <li>Quick Learner</li>
-              <li>Adaptability</li>
-              <li>Time Management</li>
-              <li>Debugging & Troubleshooting</li>
-            </ul>
+          <div class="skill-card fade-up fade-up-6" style="--accent:#34D399; --accent-strong:#22C55E;">
+            <div class="skill-content">
+              <div class="skill-back">
+                <div class="skill-back-content">
+                  <div class="skill-icon">🤝</div>
+                  <strong>Soft Skills</strong>
+                  <p class="text-gray-400 text-sm">Hover Here</p>
+                </div>
+              </div>
+              <div class="skill-front">
+                <div class="skill-figure">
+                  <div class="skill-circle"></div>
+                  <div class="skill-circle bottom"></div>
+                  <div class="skill-circle right"></div>
+                </div>
+                <div class="front-content">
+                  <small class="skill-badge">Hover Here</small>
+                  <div class="skill-description">
+                    <div class="skill-title">
+                      <p><strong>Soft Skills</strong></p>
+                      <i class="fa-solid fa-people-group" style="color: var(--accent);"></i>
+                    </div>
+                    <p class="skill-footer">Problem solving, communication, team collaboration, quick learning, adaptability, time management, debugging, and troubleshooting.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="glass p-8 rounded-2xl glow-hover hover:shadow-cyan-500/20 transition fade-up fade-up-1">
-            <div class="text-4xl mb-4">💼</div>
-            <h3 class="font-black text-2xl mb-5 text-white">IT Support & Operations</h3>
-            <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-              <li><span class="text-cyan-400">Support:</span> Basic IT Support, Troubleshooting</li>
-              <li><span class="text-cyan-400">Desktop/Laptop:</span> Desktop Support, Laptop Support</li>
-              <li><span class="text-cyan-400">OS Expertise:</span> Windows 11/10 Troubleshooting</li>
-              <li><span class="text-cyan-400">ITSM:</span> ServiceNow exposure</li>
-            </ul>
+          <div class="skill-card fade-up fade-up-1" style="--accent:#60A5FA; --accent-strong:#38BDF8;">
+            <div class="skill-content">
+              <div class="skill-back">
+                <div class="skill-back-content">
+                  <div class="skill-icon">💼</div>
+                  <strong>IT Support & Operations</strong>
+                  <p class="text-gray-400 text-sm">Hover Here</p>
+                </div>
+              </div>
+              <div class="skill-front">
+                <div class="skill-figure">
+                  <div class="skill-circle"></div>
+                  <div class="skill-circle bottom"></div>
+                  <div class="skill-circle right"></div>
+                </div>
+                <div class="front-content">
+                  <small class="skill-badge">Hover Here</small>
+                  <div class="skill-description">
+                    <div class="skill-title">
+                      <p><strong>IT Support & Operations</strong></p>
+                      <i class="fa-solid fa-headset" style="color: var(--accent);"></i>
+                    </div>
+                    <p class="skill-footer">Basic IT support, desktop and laptop troubleshooting, Windows 11/10 support, and ServiceNow exposure.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects section: portfolio project summaries -->
     <section class="py-24 px-6 md:px-20 relative" id="projects">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Projects</h2>
@@ -422,7 +931,7 @@
       </div>
     </section>
 
-    <!-- Internship Section -->
+    <!-- Internship section: work experience summary -->
     <section class="py-24 px-6 md:px-20 relative" id="internship">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Internship</h2>
@@ -443,7 +952,7 @@
       </div>
     </section>
 
-    <!-- Certifications Section -->
+    <!-- Certifications section: courses and badges -->
     <section class="py-24 px-6 md:px-20 relative" id="certifications">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Certifications</h2>
@@ -460,45 +969,34 @@
       </div>
     </section>
 
-    <!-- Contact Section (Minimal Glass) -->
+    <!-- Contact section: email and social links -->
     <section class="py-24 px-6 md:px-20 relative" id="contact">
-      <div class="max-w-2xl mx-auto text-center">
-        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-6 fade-up fade-up-1">Let's Connect</h2>
-        
-        <div class="glass p-12 rounded-3xl glow-hover fade-up fade-up-2">
-          <p class="text-gray-400 text-lg mb-10">
-            I'm always interested in new opportunities and collaborations. Reach out via any of these channels.
-          </p>
+      <div class="max-w-7xl mx-auto fade-up fade-up-2">
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-6">Let's Connect</h2>
+        <p class="text-gray-300 text-lg max-w-2xl leading-relaxed mb-8">
+          Reach out through email or social profiles for opportunities, collaborations, or technical roles.
+        </p>
 
-          <div class="flex gap-6 justify-center flex-wrap mb-8">
-            <a href="mailto:dineshkarthickbca@gmail.com" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
-              <i class="fas fa-envelope"></i> Email
-            </a>
-            <a href="https://github.com/dineshkarthick-bca" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/dinesh-karthick-b-1j9u0l3y/" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-          </div>
-
-          <div class="pt-8 border-t border-white/10 space-y-2 text-sm text-gray-400">
-            <p><strong>📍 Location:</strong>Thiruppachetti, Sivagangai Dist, Tamil Nadu </p>
-            <p><strong>🎓 Status:</strong> BCA Final Year Student </p>
-            <p><strong>🌟 Available:</strong> Open to opportunities in IT, Technical, and Operations roles</p>
-          </div>
+        <div class="flex gap-4 flex-wrap mb-8">
+          <a href="mailto:dineshkarthickbca@gmail.com" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <a href="https://github.com/dineshkarthick-bca" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/dinesh-karthick-b-1j9u0l3y/" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
         </div>
+
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="py-12 px-6 text-center text-gray-600 text-sm border-t border-white/5 mt-20">
-      <p>© 2026 Dinesh Karthick B · BCA Graduate <span class="text-cyan-400"></span></p>
-    </footer>
   </div>
 
-  <!-- Lenis Smooth Scroll -->
+  <!-- Lenis smooth scrolling and page behavior -->
+  <script src="nav-scrollspy.js"></script>
   <script>
+    // Smooth-scroll engine for anchor links and page navigation.
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -515,7 +1013,7 @@
 
     requestAnimationFrame(raf);
 
-    // Smooth scroll for anchor links
+    // Make internal links scroll smoothly instead of jumping.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -529,7 +1027,7 @@
       });
     });
 
-    // Intersection Observer for fade-up animations
+    // Trigger fade-up animations when elements enter the viewport.
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -100px 0px'
@@ -544,7 +1042,7 @@
       });
     }, observerOptions);
 
-    // Observe all fade-up elements
+    // Watch every element that uses a fade-up class.
     document.querySelectorAll('[class*="fade-up"]').forEach(el => {
       observer.observe(el);
     });
