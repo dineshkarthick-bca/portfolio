@@ -516,90 +516,11 @@
 
     /* Small info cards inside About */
     .about-info-card {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 1.5rem;
       padding: 1.75rem;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
-      transition: transform 300ms ease-in, box-shadow 300ms ease-in, border-color 300ms ease-in;
-    }
-
-    .about-info-card:hover {
-      transform: rotateZ(1deg) rotateY(10deg) scale(1.03);
-      box-shadow: 0 3rem 2rem rgba(17, 17, 17, 0.75);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Animated border light that matches the effect you shared */
-    .about-info-card::before {
-      content: "";
-      position: absolute;
-      inset: -60%;
-      border-radius: inherit;
-      background: linear-gradient(
-        115deg,
-        rgba(0, 0, 0, 0.33) 12%,
-        rgba(255, 255, 255, 0.33) 27%,
-        rgba(255, 255, 255, 0.33) 31%,
-        rgba(0, 0, 0, 0.33) 52%
-      );
-      opacity: 0;
-      transform: translate(-25%, -15%);
-      transition: opacity 300ms ease-in;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .about-info-card:hover::before {
-      opacity: 0.15;
-      animation: aboutRotate 4s linear infinite;
-    }
-
-    .about-info-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .about-info-card::after {
-      content: "";
-      position: absolute;
-      inset: 0.35rem;
-      border-radius: calc(1.5rem - 0.35rem);
-      background:
-        radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 8px, transparent 8px) 0% 0%/13px 13px no-repeat,
-        radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 8px, transparent 8px) 100% 0%/13px 13px no-repeat,
-        radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 8px, transparent 8px) 0% 100%/13px 13px no-repeat,
-        radial-gradient(circle at 0 0, #ffffff 0, #ffffff 8px, transparent 8px) 100% 100%/13px 13px no-repeat,
-        linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 10px) calc(100% - 26px) no-repeat,
-        linear-gradient(#ffffff, #ffffff) 50% 50% / calc(100% - 26px) calc(100% - 10px) no-repeat,
-        linear-gradient(
-          135deg,
-          rgba(3, 3, 3, 0.5) 0%,
-          transparent 22%,
-          transparent 47%,
-          transparent 73%,
-          rgba(0, 0, 0, 0.5) 100%
-        );
-      opacity: 0.18;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    @keyframes aboutRotate {
-      0% {
-        transform: translate(-25%, -15%) rotate(0deg);
-      }
-
-      20% {
-        transform: translate(25%, 15%) rotate(72deg);
-      }
-
-      100% {
-        transform: translate(25%, 15%) rotate(360deg);
-      }
     }
 
   </style>
