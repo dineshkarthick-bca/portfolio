@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="theme-color" content="#0EA5B7" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dinesh Karthick B | Portfolio</title>
   <meta name="description" content="Interactive premium portfolio of Dinesh Karthick B - fresher in technology and engineering." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.0.42/dist/lenis.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Satoshi:wght@400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
+    :root {
+      --accent: #0EA5B7;
+      --accent-strong: #2563EB;
+      --muted: #94a3b8;
+      --glass-border: rgba(255,255,255,0.12);
+      --bg: #0A0A0A;
+      --text: #E6EEF2;
+      --transition-fast: 180ms;
+    }
     /* Base typography for the whole page */
     * {
       font-family: 'Inter', sans-serif;
@@ -51,24 +60,26 @@
 
     /* Shared glass card effect used throughout the site */
     .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
       border-radius: 1rem;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      transition: all var(--transition-fast) ease;
     }
 
     .glass:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-      box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.16), 0 0 44px rgba(37,99,235,0.12);
+      transform: translateY(-3px);
     }
 
-    /* Cyan-purple gradient text highlight */
+    /* skip-link removed per request */
+
+    /* Cool professional gradient text highlight */
     .gradient-text {
-      background: linear-gradient(135deg, #8B5CF6, #00E5FF);
+      background: linear-gradient(135deg, #2563EB, #0EA5B7);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -116,7 +127,19 @@
     }
 
     .glow-hover:hover {
-      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 30px rgba(37,99,235,0.26);
+    }
+
+    /* Focus-visible styles for accessibility */
+    :is(a, button, .glass):focus-visible {
+      outline: 3px solid rgba(14,165,183,0.12);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px rgba(14,165,183,0.08);
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
     }
 
     @keyframes rotation_481 {
@@ -432,7 +455,7 @@
     }
 
     .nav-scroll-link.active {
-      color: #00E5FF;
+      color: var(--accent);
     }
 
     .nav-scroll-link.active::after {
@@ -443,8 +466,8 @@
       bottom: 1px;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, transparent, #00E5FF, transparent);
-      box-shadow: 0 0 10px rgba(0, 229, 255, 0.65);
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      box-shadow: 0 0 10px rgba(14,165,183,0.65);
     }
 
     /* Two-part layout for the About section */
@@ -523,9 +546,278 @@
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
     }
 
+    /* Apply sparkle-inspired button style to all native buttons and .glass links
+       Uses the site's default accent colors so the look matches the theme */
+    :root {
+      --accent: #0EA5B7; /* teal */
+      --accent-strong: #2563EB; /* blue */
+      --transition: 0.28s;
+      --cut: 0.12em;
+      --spark: 1.8s;
+    }
+
+    button, a.glass {
+      --active: 0;
+      background: radial-gradient(40% 50% at 30% 10%, rgba(139,92,246,0.06), transparent),
+                  radial-gradient(60% 60% at 70% 90%, rgba(0,229,255,0.04), transparent),
+                  linear-gradient(180deg, rgba(10,10,10,0.85), rgba(18,18,18,0.7));
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: pointer;
+      padding: .65rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      white-space: nowrap;
+      border-radius: 999px;
+      position: relative;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      transition: box-shadow var(--transition), transform var(--transition), background var(--transition), border-color var(--transition);
+      transform-origin: center;
+    }
+
+    button:active, a.glass:active {
+      transform: scale(.995);
+    }
+
+    button:is(:hover, :focus-visible), a.glass:is(:hover, :focus-visible) {
+      --active: 1;
+      box-shadow: 0 0 40px rgba(37,99,235,0.12), 0 10px 30px rgba(0,0,0,0.65);
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(14,165,183,0.14);
+    }
+
+    /* Keep small icon accents using the site's cyan accent */
+    a.glass i, button i {
+      color: var(--accent);
+      transition: color var(--transition);
+    }
+
+    /* If a button contains an element with class .text (used by the sparkle pattern), keep gradient text behavior */
+    button .text, a.glass .text {
+      background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Primary call-to-action button */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+      color: white;
+      padding: .9rem 1.25rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      border-radius: 999px;
+      border: 0.5px solid rgba(255,255,255,0.06);
+      box-shadow: 0 10px 30px rgba(22, 89, 167, 0.12);
+      transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+      position: relative;
+      overflow: hidden;
+      transform-origin: center;
+      /* entrance */
+      animation: ctaEntrance 680ms cubic-bezier(.2,.9,.3,1) 420ms both;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 44px rgba(37,99,235,0.18);
+      filter: brightness(1.03);
+    }
+
+    .btn-primary:active {
+      transform: translateY(-1px) scale(0.997);
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      pointer-events: none;
+      box-shadow: 0 0 0 0 rgba(14,165,183,0);
+      transition: box-shadow var(--transition);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 3px solid rgba(14,165,183,0.14);
+      outline-offset: 4px;
+    }
+
+    /* Full-screen loading screen shown before the portfolio opens */
+    .site-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top, rgba(14,165,183,0.12), transparent 38%),
+        radial-gradient(circle at bottom, rgba(37,99,235,0.12), transparent 42%),
+        #0A0A0A;
+      transition: opacity 420ms ease, visibility 420ms ease;
+    }
+
+    .site-loader.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .site-loader-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .loader-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+
+    .loader-mark svg {
+      display: inline-block;
+      width: 4rem;
+      height: 4rem;
+      filter: drop-shadow(0 0 18px rgba(37,99,235,0.18));
+    }
+
+    .loader-mark .dash {
+      stroke-dasharray: 360;
+      stroke-dashoffset: 360;
+      animation: draw 2.5s ease-in-out infinite alternate;
+    }
+
+    .loader-copy {
+      color: rgba(230, 238, 242, 0.82);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .loader-subcopy {
+      color: rgba(148, 163, 184, 0.9);
+      font-size: 0.875rem;
+    }
+
+    @keyframes draw {
+      0% { stroke-dashoffset: 360; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .site-loader .dash,
+      .btn-primary,
+      .btn-primary::before {
+        animation: none !important;
+      }
+    }
+
+    /* Shimmer effect that runs a couple times after entrance */
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: -40%;
+      width: 180%;
+      height: 180%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.14) 50%, transparent 100%);
+      transform: translateX(-120%) rotate(12deg);
+      filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      animation: shimmer 2.2s ease-in-out 900ms 2 both;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-120%) rotate(12deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(120%) rotate(12deg); opacity: 0; }
+    }
+
+    @keyframes ctaEntrance {
+      from { opacity: 0; transform: translateY(8px) scale(.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
   </style>
-</head>
-<body class="bg-black text-white" style="background: #0A0A0A;">
+  </head>
+  <body class="bg-black text-white" style="background: var(--bg);">
+  <div id="site-loader" class="site-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="site-loader-inner">
+      <div class="loader-mark">
+        <svg height="0" width="0" viewBox="0 0 64 64" class="absolute" aria-hidden="true">
+          <defs xmlns="http://www.w3.org/2000/svg">
+            <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="b">
+              <stop stop-color="#0EA5B7"></stop>
+              <stop stop-color="#2563EB" offset="1"></stop>
+            </linearGradient>
+            <linearGradient gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="c">
+              <stop stop-color="#38BDF8"></stop>
+              <stop stop-color="#14B8A6" offset="1"></stop>
+              <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
+            </linearGradient>
+            <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="d">
+              <stop stop-color="#0EA5B7"></stop>
+              <stop stop-color="#7DD3FC" offset="1"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 6,6 L 20,58 L 32,26 L 44,58 L 58,6" class="dash" pathLength="360"></path>
+        </svg>
+
+        <div class="w-2"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 52,6 H 14 V 58 H 52 M 14,32 H 46" class="dash" pathLength="360"></path>
+        </svg>
+
+        <div class="w-2"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 16,6 V 58 H 52" class="dash" pathLength="360"></path>
+        </svg>
+
+        <div class="w-2"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 52,14 A 24,24 0 1,0 52,50" class="dash" pathLength="360"></path>
+        </svg>
+
+        <div class="w-2"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 32,32 m 0,-26 a 26,26 0 1,1 0,52 a 26,26 0 1,1 0,-52" class="dash" pathLength="360"></path>
+        </svg>
+
+        <div class="w-2"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 6,58 V 6 L 32,36 L 58,6 V 58" class="dash" pathLength="360"></path>
+        </svg>
+
+        <div class="w-2"></div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
+          <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 52,6 H 14 V 58 H 52 M 14,32 H 46" class="dash" pathLength="360"></path>
+        </svg>
+      </div>
+      <div>
+        <div class="loader-copy">Loading Portfolio</div>
+        <div class="loader-subcopy">Preparing a smooth experience</div>
+      </div>
+    </div>
+  </div>
   <!-- Decorative background orbs -->
   <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
     <div class="absolute -top-40 -right-40 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl orb-1"></div>
@@ -545,9 +837,9 @@
     </div>
   </nav>
 
-  <div class="relative z-10">
+  <div id="main" class="relative z-10">
     <!-- Hero section: short intro and resume button -->
-    <section class="min-h-screen flex items-center justify-center px-6 md:px-20 pt-32 pb-20">
+    <section class="min-h-screen flex items-center justify-center px-6 md:px-20 pt-24 pb-16">
       <div class="max-w-4xl w-full text-center">
         <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 fade-up fade-up-1" style="line-height: 1.08;">
           Aspiring IT Professional<br/>
@@ -560,8 +852,9 @@
           Motivated BCA fresher with a strong interest in the IT industry and emerging technologies. Passionate about software development, problem-solving, and continuous learning. Eager to contribute skills and grow in a dynamic technology-driven environment.
         </p>
         <div class="flex gap-4 justify-center flex-wrap fade-up fade-up-4">
-          <a href="Resume.pdf" target="_blank" rel="noopener noreferrer" class="glass px-8 py-4 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
-            <i class="fas fa-file-arrow-down"></i> View Resume
+          <a href="Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-3" style="position:relative;">
+            <i class="fas fa-file-arrow-down"></i>
+            <span>View Resume</span>
           </a>
         </div>
       </div>
@@ -917,22 +1210,32 @@
   <!-- Lenis smooth scrolling and page behavior -->
   <script src="nav-scrollspy.js"></script>
   <script>
-    // Smooth-scroll engine for anchor links and page navigation.
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      smoothTouch: false,
-    });
+    // Keep the loading overlay visible for at least 5 seconds, with a 7 second hard cap.
+    const loader = document.getElementById('site-loader');
+    const loaderStartedAt = Date.now();
+    const minimumLoaderTime = 5000;
+    const maximumLoaderTime = 7000;
+    let loaderDismissed = false;
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    const hideLoader = () => {
+      if (!loader || loaderDismissed) return;
+      loaderDismissed = true;
+      loader.classList.add('is-hidden');
+      window.setTimeout(() => {
+        if (loader && loader.parentNode) {
+          loader.parentNode.removeChild(loader);
+        }
+      }, 500);
+    };
 
-    requestAnimationFrame(raf);
+    const hideLoaderAfterMinimum = () => {
+      if (!loader || loaderDismissed) return;
+      const elapsed = Date.now() - loaderStartedAt;
+      const remaining = Math.max(0, minimumLoaderTime - elapsed);
+      window.setTimeout(hideLoader, remaining);
+    };
+
+    window.setTimeout(hideLoader, maximumLoaderTime);
 
     // Make internal links scroll smoothly instead of jumping.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -940,10 +1243,7 @@
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          lenis.scrollTo(target, {
-            offset: -100,
-            duration: 1.2
-          });
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
@@ -967,6 +1267,12 @@
     document.querySelectorAll('[class*="fade-up"]').forEach(el => {
       observer.observe(el);
     });
+
+    if (document.readyState === 'complete') {
+      hideLoaderAfterMinimum();
+    } else {
+      window.addEventListener('load', hideLoaderAfterMinimum, { once: true });
+    }
 
   </script>
 </body>
