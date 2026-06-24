@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="theme-color" content="#0EA5B7" />
+  <meta name="theme-color" content="#004d40" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dinesh Karthick B | Portfolio</title>
   <meta name="description" content="Interactive premium portfolio of Dinesh Karthick B - fresher in technology and engineering." />
@@ -13,12 +13,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     :root {
-      --accent: #0EA5B7;
-      --accent-strong: #2563EB;
-      --muted: #94a3b8;
-      --glass-border: rgba(255,255,255,0.12);
-      --bg: #0A0A0A;
-      --text: #E6EEF2;
+      --emerald-dark: #004d40;
+      --gold-accent: #ffb300;
+      --card-surface: #ffffff;
+      --background-light: #f5f8f7;
+      --text-color: #333333;
+      --text-muted: #666666;
+      --success-color: #4CAF50;
+      --error-color: #F44336;
+      --border-color: #e0e0e0;
+      --accent: var(--emerald-dark);
+      --accent-strong: var(--gold-accent);
+      --muted: var(--text-muted);
+      --glass-border: var(--border-color);
+      --bg: var(--background-light);
+      --text: var(--text-color);
       --transition-fast: 180ms;
     }
     /* Base typography for the whole page */
@@ -60,18 +69,18 @@
 
     /* Shared glass card effect used throughout the site */
     .glass {
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(10px);
       border: 1px solid var(--glass-border);
       border-radius: 1rem;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 18px rgba(0, 77, 64, 0.08);
       transition: all var(--transition-fast) ease;
     }
 
     .glass:hover {
-      background: rgba(255, 255, 255, 0.09);
-      border-color: rgba(255, 255, 255, 0.18);
-      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.16), 0 0 44px rgba(37,99,235,0.12);
+      background: rgba(255, 255, 255, 0.98);
+      border-color: rgba(0, 77, 64, 0.16);
+      box-shadow: 0 18px 30px rgba(0, 77, 64, 0.12), 0 0 44px rgba(255,179,0,0.12);
       transform: translateY(-3px);
     }
 
@@ -79,7 +88,7 @@
 
     /* Cool professional gradient text highlight */
     .gradient-text {
-      background: linear-gradient(135deg, #2563EB, #0EA5B7);
+      background: linear-gradient(135deg, var(--emerald-dark), var(--gold-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -127,14 +136,14 @@
     }
 
     .glow-hover:hover {
-      box-shadow: 0 0 30px rgba(37,99,235,0.26);
+      box-shadow: 0 0 30px rgba(255,179,0,0.22);
     }
 
     /* Focus-visible styles for accessibility */
     :is(a, button, .glass):focus-visible {
-      outline: 3px solid rgba(14,165,183,0.12);
+      outline: 3px solid rgba(0,77,64,0.16);
       outline-offset: 3px;
-      box-shadow: 0 0 0 4px rgba(14,165,183,0.08);
+      box-shadow: 0 0 0 4px rgba(255,179,0,0.12);
     }
 
     /* Respect reduced motion */
@@ -187,7 +196,7 @@
       height: 100%;
       transform-style: preserve-3d;
       transition: transform 300ms;
-      box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.9);
+      box-shadow: 0px 0px 18px 1px rgba(0, 77, 64, 0.16);
       border-radius: 24px;
       position: relative;
     }
@@ -217,8 +226,8 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background-color: #151515;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(145deg, rgba(0,77,64,0.08), rgba(255,179,0,0.08));
+      border: 1px solid rgba(0, 77, 64, 0.1);
     }
 
     /* Rotating light border effect on the card back */
@@ -238,9 +247,9 @@
       position: absolute;
       width: 99%;
       height: 99%;
-      background-color: #151515;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(247,244,233,0.98));
       border-radius: 22px;
-      color: white;
+      color: var(--text-color);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -259,9 +268,9 @@
     /* Front side of the flip card */
     .skill-front {
       transform: rotateY(180deg);
-      color: white;
-      background: linear-gradient(180deg, rgba(21, 21, 21, 0.98) 0%, rgba(21, 21, 21, 0.94) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-color);
+      background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,244,229,0.98) 100%);
+      border: 1px solid rgba(0, 77, 64, 0.1);
     }
 
     .skill-front .front-content {
@@ -275,7 +284,7 @@
     }
 
     .skill-badge {
-      background-color: rgba(0, 0, 0, 0.35);
+      background-color: rgba(0, 77, 64, 0.08);
       padding: 5px 12px;
       border-radius: 10px;
       backdrop-filter: blur(2px);
@@ -283,19 +292,20 @@
       font-size: 12.6px;
       letter-spacing: 0.4px;
       text-transform: uppercase;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 179, 0, 0.18);
+      color: var(--gold-accent);
     }
 
     /* Large info box on the front side */
     .skill-description {
-      box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.55);
+      box-shadow: 0px 0px 10px 5px rgba(0, 77, 64, 0.12);
       width: 100%;
       min-height: 290px;
       padding: 34px 26px;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(5px);
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 77, 64, 0.08);
     }
 
     .skill-title {
@@ -313,7 +323,7 @@
     }
 
     .skill-footer {
-      color: rgba(255, 255, 255, 0.62);
+      color: var(--text-muted);
       margin-top: 6px;
       font-size: 12.6px;
       line-height: 1.5;
@@ -364,8 +374,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 179, 0, 0.1);
+      border: 1px solid rgba(0, 77, 64, 0.12);
       font-size: 1.6rem;
       backdrop-filter: blur(6px);
     }
@@ -381,18 +391,18 @@
       padding: 0.25rem 0.5rem;
       border-radius: 999px;
       font-size: 0.7rem;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 179, 0, 0.1);
+      border: 1px solid rgba(0, 77, 64, 0.1);
+      color: var(--text-color);
     }
 
     /* Project cards shown in the projects section */
     .project-card {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(0, 77, 64, 0.12);
       border-radius: 1rem;
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 15px rgba(0, 77, 64, 0.08);
       padding: 1.5rem;
       min-width: max-content;
       width: 20rem;
@@ -401,9 +411,31 @@
     }
 
     .project-card:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 40px rgba(0, 229, 255, 0.2);
+      background: rgba(255, 255, 255, 0.98);
+      border-color: rgba(0, 77, 64, 0.2);
+      box-shadow: 0 0 40px rgba(255, 179, 0, 0.16);
+    }
+
+    .project-card h3,
+    .project-card p,
+    .project-card span,
+    #certifications h2,
+    #certifications p,
+    #certifications li,
+    #projects h2,
+    #projects p {
+      color: var(--text-color);
+    }
+
+    .project-card .text-gray-400,
+    .project-card .text-gray-300,
+    .project-card .text-gray-200,
+    #certifications .text-gray-400,
+    #certifications .text-gray-300,
+    #projects .text-gray-400,
+    #projects .text-gray-300,
+    #projects .text-gray-200 {
+      color: var(--text-muted);
     }
 
     /* Slow moving background orb animations */
@@ -455,7 +487,7 @@
     }
 
     .nav-scroll-link.active {
-      color: var(--accent);
+      color: var(--emerald-dark);
     }
 
     .nav-scroll-link.active::after {
@@ -466,8 +498,8 @@
       bottom: 1px;
       height: 2px;
       border-radius: 999px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-      box-shadow: 0 0 10px rgba(14,165,183,0.65);
+      background: linear-gradient(90deg, transparent, var(--gold-accent), transparent);
+      box-shadow: 0 0 10px rgba(255,179,0,0.5);
     }
 
     /* Two-part layout for the About section */
@@ -491,9 +523,9 @@
       margin: 0 auto;
       padding: 18px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(0, 229, 255, 0.45), rgba(139, 92, 246, 0.16) 42%, rgba(10, 10, 10, 0.95) 78%);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 179, 0, 0.3), rgba(0, 77, 64, 0.12) 42%, rgba(245, 248, 247, 0.98) 78%);
+      border: 1px solid rgba(0, 77, 64, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 77, 64, 0.18);
     }
 
     /* Inner circle content for the avatar */
@@ -501,13 +533,13 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background: linear-gradient(145deg, #111111, #1b1b1b);
+      background: linear-gradient(145deg, #ffffff, #eef4f2);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 77, 64, 0.08);
     }
 
     .about-avatar-core span {
@@ -519,7 +551,7 @@
 
     .about-avatar-core p {
       margin-top: 0.5rem;
-      color: #94a3b8;
+      color: var(--text-muted);
       font-size: 0.9rem;
     }
 
@@ -539,18 +571,18 @@
 
     /* Small info cards inside About */
     .about-info-card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 77, 64, 0.08);
       border-radius: 1.5rem;
       padding: 1.75rem;
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 20px 45px rgba(0, 77, 64, 0.08);
     }
 
     /* Apply sparkle-inspired button style to all native buttons and .glass links
        Uses the site's default accent colors so the look matches the theme */
     :root {
-      --accent: #0EA5B7; /* teal */
-      --accent-strong: #2563EB; /* blue */
+      --accent: #004d40;
+      --accent-strong: #ffb300;
       --transition: 0.28s;
       --cut: 0.12em;
       --spark: 1.8s;
@@ -558,13 +590,13 @@
 
     button, a.glass {
       --active: 0;
-      background: radial-gradient(40% 50% at 30% 10%, rgba(139,92,246,0.06), transparent),
-                  radial-gradient(60% 60% at 70% 90%, rgba(0,229,255,0.04), transparent),
-                  linear-gradient(180deg, rgba(10,10,10,0.85), rgba(18,18,18,0.7));
-      color: white;
+      background: radial-gradient(40% 50% at 30% 10%, rgba(255,179,0,0.08), transparent),
+                  radial-gradient(60% 60% at 70% 90%, rgba(0,77,64,0.06), transparent),
+                  linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,248,247,0.92));
+      color: var(--text-color);
       font-size: 1rem;
       font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(0,77,64,0.08);
       cursor: pointer;
       padding: .65rem 1rem;
       display: inline-flex;
@@ -584,9 +616,9 @@
 
     button:is(:hover, :focus-visible), a.glass:is(:hover, :focus-visible) {
       --active: 1;
-      box-shadow: 0 0 40px rgba(37,99,235,0.12), 0 10px 30px rgba(0,0,0,0.65);
+      box-shadow: 0 0 40px rgba(255,179,0,0.14), 0 10px 30px rgba(0,77,64,0.16);
       transform: translateY(-2px) scale(1.02);
-      border-color: rgba(14,165,183,0.14);
+      border-color: rgba(255,179,0,0.22);
     }
 
     /* Keep small icon accents using the site's cyan accent */
@@ -606,14 +638,14 @@
 
     /* Primary call-to-action button */
     .btn-primary {
-      background: linear-gradient(90deg, var(--accent-strong), var(--accent));
-      color: white;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      color: #ffffff;
       padding: .9rem 1.25rem;
       font-size: 1.05rem;
       font-weight: 700;
       border-radius: 999px;
       border: 0.5px solid rgba(255,255,255,0.06);
-      box-shadow: 0 10px 30px rgba(22, 89, 167, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 77, 64, 0.14);
       transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
       position: relative;
       overflow: hidden;
@@ -624,7 +656,7 @@
 
     .btn-primary:hover {
       transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 18px 44px rgba(37,99,235,0.18);
+      box-shadow: 0 18px 44px rgba(255,179,0,0.2);
       filter: brightness(1.03);
     }
 
@@ -638,12 +670,12 @@
       inset: 0;
       border-radius: 999px;
       pointer-events: none;
-      box-shadow: 0 0 0 0 rgba(14,165,183,0);
+      box-shadow: 0 0 0 0 rgba(255,179,0,0);
       transition: box-shadow var(--transition);
     }
 
     .btn-primary:focus-visible {
-      outline: 3px solid rgba(14,165,183,0.14);
+      outline: 3px solid rgba(255,179,0,0.22);
       outline-offset: 4px;
     }
 
@@ -655,9 +687,9 @@
       display: grid;
       place-items: center;
       background:
-        radial-gradient(circle at top, rgba(14,165,183,0.12), transparent 38%),
-        radial-gradient(circle at bottom, rgba(37,99,235,0.12), transparent 42%),
-        #0A0A0A;
+        radial-gradient(circle at top, rgba(255,179,0,0.16), transparent 38%),
+        radial-gradient(circle at bottom, rgba(0,77,64,0.16), transparent 42%),
+        #f5f8f7;
       transition: opacity 420ms ease, visibility 420ms ease;
     }
 
@@ -687,7 +719,7 @@
       display: inline-block;
       width: 4rem;
       height: 4rem;
-      filter: drop-shadow(0 0 18px rgba(37,99,235,0.18));
+      filter: drop-shadow(0 0 18px rgba(255,179,0,0.2));
     }
 
     .loader-mark .dash {
@@ -697,14 +729,14 @@
     }
 
     .loader-copy {
-      color: rgba(230, 238, 242, 0.82);
+      color: var(--emerald-dark);
       font-size: 0.95rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
     .loader-subcopy {
-      color: rgba(148, 163, 184, 0.9);
+      color: var(--text-muted);
       font-size: 0.875rem;
     }
 
@@ -750,24 +782,24 @@
 
   </style>
   </head>
-  <body class="bg-black text-white" style="background: var(--bg);">
+  <body class="bg-black text-white" style="background: var(--background-light); color: var(--text-color);">
   <div id="site-loader" class="site-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
     <div class="site-loader-inner">
       <div class="loader-mark">
         <svg height="0" width="0" viewBox="0 0 64 64" class="absolute" aria-hidden="true">
           <defs xmlns="http://www.w3.org/2000/svg">
             <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="b">
-              <stop stop-color="#0EA5B7"></stop>
-              <stop stop-color="#2563EB" offset="1"></stop>
+              <stop stop-color="#004d40"></stop>
+              <stop stop-color="#ffb300" offset="1"></stop>
             </linearGradient>
             <linearGradient gradientUnits="userSpaceOnUse" y2="0" x2="0" y1="64" x1="0" id="c">
-              <stop stop-color="#38BDF8"></stop>
-              <stop stop-color="#14B8A6" offset="1"></stop>
+              <stop stop-color="#ffb300"></stop>
+              <stop stop-color="#2e7d32" offset="1"></stop>
               <animateTransform repeatCount="indefinite" keySplines=".42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1;.42,0,.58,1" keyTimes="0; 0.125; 0.25; 0.375; 0.5; 0.625; 0.75; 0.875; 1" dur="8s" values="0 32 32;-270 32 32;-270 32 32;-540 32 32;-540 32 32;-810 32 32;-810 32 32;-1080 32 32;-1080 32 32" type="rotate" attributeName="gradientTransform"></animateTransform>
             </linearGradient>
             <linearGradient gradientUnits="userSpaceOnUse" y2="2" x2="0" y1="62" x1="0" id="d">
-              <stop stop-color="#0EA5B7"></stop>
-              <stop stop-color="#7DD3FC" offset="1"></stop>
+              <stop stop-color="#004d40"></stop>
+              <stop stop-color="#ffca28" offset="1"></stop>
             </linearGradient>
           </defs>
         </svg>
@@ -829,10 +861,10 @@
     <div class="glass px-2 sm:px-3 md:px-4 lg:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-full flex items-center gap-1.5 sm:gap-2 md:gap-4 lg:gap-5 overflow-x-auto scrollbar-hide" style="overflow-y: hidden;">
       <a href="#" class="text-xs sm:text-xs md:text-sm lg:text-sm font-bold gradient-text whitespace-nowrap flex-shrink-0">Dinesh Karthick B</a>
       <ul class="flex gap-1 sm:gap-1.5 md:gap-4 lg:gap-5 text-xs sm:text-xs md:text-sm lg:text-sm font-medium whitespace-nowrap flex-shrink-0">
-        <li><a href="#about" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">About</a></li>
-        <li><a href="#skills" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">Skills</a></li>
-        <li><a href="#projects" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">Projects</a></li>
-        <li><a href="#internship" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-cyan-400 transition duration-300">Internship</a></li>
+        <li><a href="#about" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-emerald-700 transition duration-300">About</a></li>
+        <li><a href="#skills" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-emerald-700 transition duration-300">Skills</a></li>
+        <li><a href="#projects" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-emerald-700 transition duration-300">Projects</a></li>
+        <li><a href="#achievement" class="nav-scroll-link px-2 py-1 sm:px-2 sm:py-1.5 md:px-2.5 md:py-1.5 inline-block rounded hover:text-emerald-700 transition duration-300">Achievement</a></li>
       </ul>
     </div>
   </nav>
@@ -841,20 +873,20 @@
     <!-- Hero section: short intro and resume button -->
     <section class="min-h-screen flex items-center justify-center px-6 md:px-20 pt-24 pb-16">
       <div class="max-w-4xl w-full text-center">
+        <h2 class="text-xl md:text-3xl font-extrabold text-emerald-800 mb-4 fade-up fade-up-1">Hi, I'am Dinesh Karthick</h2>
         <h1 class="text-4xl md:text-6xl font-black leading-tight mb-6 fade-up fade-up-1" style="line-height: 1.08;">
-          Aspiring IT Professional<br/>
-          Passionate About <span class="gradient-text">Technology & Innovation</span>
+          Banking Professional<br/>
+          with <span class="gradient-text">Technology Background</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-400 mb-6 fade-up fade-up-2">
-          IT Graduate | Problem Solver | Tech Enthusiast | Adaptable Professional
+        <p class="text-xl md:text-2xl text-slate-700 mb-6 fade-up fade-up-2">
+          Relationship Manager at ICICI Bank | BCA Graduate | Banking, Financial Services & Technology Enthusiast
         </p>
-        <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-3">
-          Motivated BCA fresher with a strong interest in the IT industry and emerging technologies. Passionate about software development, problem-solving, and continuous learning. Eager to contribute skills and grow in a dynamic technology-driven environment.
-        </p>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-3">
+         Motivated BCA graduate currently working as a Relationship Manager at ICICI Bank. Strong foundation in technology, customer engagement, problem-solving, and digital solutions. Passionate about building meaningful customer relationships while continuously learning about banking, wealth management, financial products, and emerging technologies.        </p>
         <div class="flex gap-4 justify-center flex-wrap fade-up fade-up-4">
           <a href="Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center gap-3" style="position:relative;">
             <i class="fas fa-file-arrow-down"></i>
-            <span>View Resume</span>
+            <span>View My Resume</span>
           </a>
         </div>
       </div>
@@ -865,57 +897,59 @@
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16 fade-up fade-up-1">
           <h2 class="text-5xl md:text-6xl font-black gradient-text mb-5">About Me</h2>
-          <p class="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">Passionate about creating practical digital solutions with clean thinking, curiosity, and continuous learning.</p>
+          <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">To build a successful career in banking and financial services while leveraging my technology background to create value, improve customer experiences, and contribute to organizational growth.</p>
         </div>
 
         <div class="about-layout">
           <div class="about-avatar fade-up fade-up-2">
             <div class="about-avatar-core">
-              <span class="gradient-text">DK</span>
-              <p>BCA Final Year</p>
+              <span class="gradient-text">Focus</span>
+              <p>On What You're Doing</p>
             </div>
           </div>
 
           <div class="fade-up fade-up-3">
-            <p class="text-gray-400 text-lg leading-relaxed mb-6">
-              I am an IT graduate with a solid foundation in computer science fundamentals and hands-on experience in building practical, real-world solutions. I enjoy exploring multiple areas of the IT ecosystem, including software systems, data handling, and cloud technologies.
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">
+              I am a BCA graduate and Relationship Manager at ICICI Bank, passionate about customer relationship management, financial services, and technology-driven solutions.
             </p>
-            <p class="text-gray-400 text-lg leading-relaxed">
-              I am driven by problem-solving and a strong curiosity to understand how systems work behind the scenes. With a structured approach and adaptability to new tools and environments, I focus on continuously improving my skills while delivering efficient and meaningful solutions.
+            <p class="text-slate-600 text-lg leading-relaxed mb-6">
+              My academic background in computer applications has equipped me with strong analytical, problem-solving, and digital skills, while my professional journey in banking allows me to build meaningful customer relationships and understand financial products, wealth solutions, and business needs.
+            <p class="text-slate-600 text-lg leading-relaxed">
+              I believe in continuous learning, professional growth, and delivering value through both technology and customer-centric service.
             </p>
           </div>
         </div>
 
         <div class="about-info-grid">
           <div class="about-info-card fade-up fade-up-4">
-            <h3 class="text-2xl font-black text-white mb-5">Key Highlights</h3>
+            <h3 class="text-2xl font-black text-slate-900 mb-5">Profile Highlights</h3>
             <div class="space-y-3">
               <div class="flex items-center gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span class="text-gray-300">BCA Final Year | Thiagarajar College</span>
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span class="text-slate-700">BCA Graduate | Thiagarajar College</span>
               </div>
               <div class="flex items-center gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span class="text-gray-300">4+ Academic & Practical Projects</span>
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span class="text-slate-700">4+ Academic & Practical Projects</span>
               </div>
               <div class="flex items-center gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span class="text-gray-300">4+ Industry Certifications</span>
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span class="text-slate-700">4+ Industry Certifications</span>
               </div>
               <div class="flex items-center gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span class="text-gray-300">10+ Technologies Explored</span>
+                <span class="text-emerald-600 font-bold">✓</span>
+                <span class="text-slate-700">10+ Technologies Explored</span>
               </div>
             </div>
           </div>
 
           <div class="about-info-card fade-up fade-up-5">
-            <h3 class="text-2xl font-black text-white mb-5">Professional Status</h3>
-            <div class="space-y-3 text-gray-300">
-              <p>📍 <strong>Location:</strong> Open to Work Across Pan India</p>
-              <p>🎓 <strong>Status:</strong> BCA Final Year Student</p>
-              <p>🌟 <strong>Available:</strong> Open to opportunities in IT, Technical, and Operations roles</p>
-              <p>✨ <strong>Fresher · BCA Student</strong></p>
+            <h3 class="text-2xl font-black text-slate-900 mb-5">Professional Experience</h3>
+            <div class="space-y-3 text-slate-700">
+              <p>📍 <strong>ICICI Bank - Relationship Manager</strong> </p>
+              <p>June 2026 - Present</p>
+              <p>📍 <strong>Accenture - Summer Intern</strong> </p>
+              <p>May 2025 - July 2025</p>
             </div>
           </div>
         </div>
@@ -926,16 +960,16 @@
     <section class="py-24 px-6 md:px-20 relative" id="skills">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Skills</h2>
-        <p class="text-gray-400 text-lg mb-16 fade-up fade-up-2">Hover each card to flip into the detailed skill set</p>
+        <p class="text-slate-600 text-lg mb-16 fade-up fade-up-2">Hover each card to flip into the detailed skill set</p>
 
         <div class="skills-grid">
-          <div class="skill-card fade-up fade-up-3" style="--accent:#00E5FF; --accent-strong:#8B5CF6;">
+          <div class="skill-card fade-up fade-up-3" style="--accent:#004d40; --accent-strong:#ffb300;">
             <div class="skill-content">
               <div class="skill-back">
                 <div class="skill-back-content">
                   <div class="skill-icon">🧠</div>
                   <strong>Technical Skills</strong>
-                  <p class="text-gray-400 text-sm">Hover/Tap Here</p>
+                  <p class="text-amber-700 text-sm">Hover/Tap Here</p>
                 </div>
               </div>
               <div class="skill-front">
@@ -958,13 +992,13 @@
             </div>
           </div>
 
-          <div class="skill-card fade-up fade-up-4" style="--accent:#A78BFA; --accent-strong:#EC4899;">
+          <div class="skill-card fade-up fade-up-4" style="--accent:#0f766e; --accent-strong:#ffca28;">
             <div class="skill-content">
               <div class="skill-back">
                 <div class="skill-back-content">
-                  <div class="skill-icon">🤖</div>
-                  <strong>AI / ML</strong>
-                  <p class="text-gray-400 text-sm">Hover/Tap Here</p>
+                  <div class="skill-icon">🏦</div>
+                  <strong>Banking</strong>
+                  <p class="text-amber-700 text-sm">Hover/Tap Here</p>
                 </div>
               </div>
               <div class="skill-front">
@@ -977,23 +1011,23 @@
                   <small class="skill-badge">Hover Here</small>
                   <div class="skill-description">
                     <div class="skill-title">
-                      <p><strong>AI / ML</strong></p>
-                      <i class="fa-solid fa-robot" style="color: var(--accent);"></i>
+                      <p><strong>Banking</strong></p>
+                      <i class="fa-solid fa-bank" style="color: var(--accent);"></i>
                     </div>
-                    <p class="skill-footer">Gemini API, RAG workflows, and FAISS for semantic retrieval and AI-powered automation.</p>
+                    <p class="skill-footer">Customer Service, Problem Solving, Communication Skills, Banking Operations(Basic).</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="skill-card fade-up fade-up-5" style="--accent:#FBBF24; --accent-strong:#FB7185;">
+          <div class="skill-card fade-up fade-up-5" style="--accent:#2e7d32; --accent-strong:#ffb300;">
             <div class="skill-content">
               <div class="skill-back">
                 <div class="skill-back-content">
                   <div class="skill-icon">⚙️</div>
                   <strong>Tools & Platforms</strong>
-                  <p class="text-gray-400 text-sm">Hover/Tap Here</p>
+                  <p class="text-amber-700 text-sm">Hover/Tap Here</p>
                 </div>
               </div>
               <div class="skill-front">
@@ -1016,13 +1050,13 @@
             </div>
           </div>
 
-          <div class="skill-card fade-up fade-up-6" style="--accent:#34D399; --accent-strong:#22C55E;">
+          <div class="skill-card fade-up fade-up-6" style="--accent:#00695c; --accent-strong:#d4a017;">
             <div class="skill-content">
               <div class="skill-back">
                 <div class="skill-back-content">
                   <div class="skill-icon">🤝</div>
                   <strong>Soft Skills</strong>
-                  <p class="text-gray-400 text-sm">Hover/Tap Here</p>
+                  <p class="text-amber-700 text-sm">Hover/Tap Here</p>
                 </div>
               </div>
               <div class="skill-front">
@@ -1045,13 +1079,13 @@
             </div>
           </div>
 
-          <div class="skill-card fade-up fade-up-1" style="--accent:#60A5FA; --accent-strong:#38BDF8;">
+          <div class="skill-card fade-up fade-up-1" style="--accent:#1b5e20; --accent-strong:#ffb300;">
             <div class="skill-content">
               <div class="skill-back">
                 <div class="skill-back-content">
                   <div class="skill-icon">💼</div>
                   <strong>IT Support & Operations</strong>
-                  <p class="text-gray-400 text-sm">Hover/Tap Here</p>
+                  <p class="text-amber-700 text-sm">Hover/Tap Here</p>
                 </div>
               </div>
               <div class="skill-front">
@@ -1080,65 +1114,67 @@
     <!-- Projects section: portfolio project summaries -->
     <section class="py-24 px-6 md:px-20 relative" id="projects">
       <div class="max-w-7xl mx-auto">
-        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Projects</h2>
-        <p class="text-gray-400 text-lg mb-16 fade-up fade-up-2">Hover on a project card to view more details</p>
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Projects & Technical Work</h2>
+        <p class="text-slate-600 text-lg mb-6 fade-up fade-up-2">These projects demonstrate my interest in technology, software development, AI applications, and problem-solving.</p>
+        <p class="text-slate-600 text-lg mb-16 fade-up fade-up-2">Hover on a project card to view more details</p>
+
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-purple-400/70 hover:shadow-purple-500/30 hover:scale-105 transition duration-300 fade-up fade-up-3">
-            <h3 class="text-2xl font-black text-white mb-2">Smart Resume Analyzer</h3>
-            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">AI-powered platform that extracts skills from resumes and generates interview questions.</p>
-            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-emerald-700/70 hover:shadow-emerald-500/30 hover:scale-105 transition duration-300 fade-up fade-up-3">
+            <h3 class="text-2xl font-black text-slate-900 mb-2">Smart Resume Analyzer</h3>
+            <p class="text-slate-600 mb-3 transition-colors duration-300 group-hover:text-slate-800">AI-powered platform that extracts skills from resumes and generates interview questions.</p>
+            <p class="text-slate-500 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-slate-700 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
               Manual resume screening is time-consuming → built an AI-powered system to automatically analyze resumes and generate insights with interview guidance.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Node.js</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">React + Vite</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">REST APIs</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">MongoDB</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">AI</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">Node.js</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">React + Vite</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">REST APIs</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">MongoDB</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">AI</span>
             </div>
           </div>
 
-          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-blue-400/70 hover:shadow-blue-500/30 hover:scale-105 transition duration-300 fade-up fade-up-5">
-            <h3 class="text-2xl font-black text-white mb-2">Resort CRM System</h3>
-            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">Booking management CRM with API validation, testing workflows, and deployment support.</p>
-            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-amber-700/70 hover:shadow-amber-500/30 hover:scale-105 transition duration-300 fade-up fade-up-5">
+            <h3 class="text-2xl font-black text-slate-900 mb-2">Resort CRM System</h3>
+            <p class="text-slate-600 mb-3 transition-colors duration-300 group-hover:text-slate-800">Booking management CRM with API validation, testing workflows, and deployment support.</p>
+            <p class="text-slate-500 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-slate-700 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
               Inconsistent deployment environments cause system issues → implemented containerization and CI/CD workflows for reliable and streamlined deployments.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Microsoft Azure</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Postman</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">CI / CD (Github Actions)</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Git, GitHub</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Docker</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">Microsoft Azure</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">Postman</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">CI / CD (Github Actions)</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">Git, GitHub</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">Docker</span>
             </div>
           </div>
 
-          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-cyan-400/70 hover:shadow-cyan-500/30 hover:scale-105 transition duration-300 fade-up fade-up-4">
-            <h3 class="text-2xl font-black text-white mb-2">AI Customer Support Multi-Agent System</h3>
-            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">Multi-agent support workflow for query classification, escalation, and response handling.</p>
-            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-emerald-600/70 hover:shadow-emerald-500/30 hover:scale-105 transition duration-300 fade-up fade-up-4">
+            <h3 class="text-2xl font-black text-slate-900 mb-2">AI Customer Support Multi-Agent System</h3>
+            <p class="text-slate-600 mb-3 transition-colors duration-300 group-hover:text-slate-800">Multi-agent support workflow for query classification, escalation, and response handling.</p>
+            <p class="text-slate-500 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-slate-700 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
               Handling large volumes of customer queries is inefficient → developed a multi-agent AI system for automated routing, response generation, and issue resolution.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Multi-Agent</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">RAG</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">FAISS</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Gemini API</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Python</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">Multi-Agent</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">RAG</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">FAISS</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">Gemini API</span>
+              <span class="px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full text-xs text-emerald-900">Python</span>
             </div>
           </div>
 
-          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-emerald-400/70 hover:shadow-emerald-500/30 hover:scale-105 transition duration-300 fade-up fade-up-6">
-            <h3 class="text-2xl font-black text-white mb-2">Currency Converter</h3>
-            <p class="text-gray-400 mb-3 transition-colors duration-300 group-hover:text-gray-200">Android app for real-time conversion with a clean UI and stable calculations.</p>
-            <p class="text-gray-300 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-gray-100 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
+          <div class="group text-left glass p-7 rounded-2xl shadow-xl border border-white/20 hover:border-amber-600/70 hover:shadow-amber-500/30 hover:scale-105 transition duration-300 fade-up fade-up-6">
+            <h3 class="text-2xl font-black text-slate-900 mb-2">Currency Converter</h3>
+            <p class="text-slate-600 mb-3 transition-colors duration-300 group-hover:text-slate-800">Android app for real-time conversion with a clean UI and stable calculations.</p>
+            <p class="text-slate-500 text-sm leading-relaxed overflow-hidden max-h-0 opacity-0 transition-all duration-300 group-hover:text-slate-700 group-hover:max-h-24 group-hover:opacity-100 group-hover:mb-4">
               Manual currency conversion is slow and error-prone → created a mobile app for quick and accurate real-time currency calculations.
             </p>
             <div class="flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Android Studio</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">UI Testing</span>
-              <span class="px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-xs text-gray-300">Java</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">Android Studio</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">UI Testing</span>
+              <span class="px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs text-amber-900">Java</span>
             </div>
           </div>
         </div>
@@ -1148,19 +1184,13 @@
     <!-- Internship section: work experience summary -->
     <section class="py-24 px-6 md:px-20 relative" id="internship">
       <div class="max-w-7xl mx-auto">
-        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Internship</h2>
-        <p class="text-gray-400 text-lg mb-12 fade-up fade-up-2">Professional exposure and practical learning experience</p>
-
+        <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Achievement</h2>
         <div class="glass p-8 md:p-10 rounded-2xl shadow-xl border border-white/20 glow-hover fade-up fade-up-3">
-          <h3 class="text-2xl md:text-3xl font-black text-white mb-2">Summer Intern - Accenture</h3>
-          <p class="text-gray-300 mb-6">May 2025 - July 2025 | Hybrid (8 Weeks)</p>
-
-          <ul class="space-y-3 text-gray-300 leading-relaxed">
-            <li>- Gained exposure to IT workflows and cloud computing fundamentals.</li>
-            <li>- Learned basics of Microsoft Azure services and deployment models.</li>
-            <li>- Participated in guided sessions, team projects, and client-simulation activities.</li>
-            <li>- Built professional discipline in customer-focused IT environments.</li>
-            <li>- Certificate of Completion awarded by Accenture.</li>
+          <ul class="space-y-3 text-slate-700 leading-relaxed">
+            <li>- Selected for Relationship Manager role at ICICI Bank.</li>
+            <li>- Successfully completed multiple technical and AI-based academic projects.</li>
+            <li>- Built end-to-end web and AI applications using modern development frameworks.</li>
+            <li>- Demonstrated adaptability by transitioning from a technology academic background into the banking and financial services sector.</li>
           </ul>
         </div>
       </div>
@@ -1170,10 +1200,10 @@
     <section class="py-24 px-6 md:px-20 relative" id="certifications">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-4 fade-up fade-up-1">Certifications</h2>
-        <p class="text-gray-400 text-lg mb-12 fade-up fade-up-2">Validated learning in web, cloud, database, and analytics domains</p>
+        <p class="text-slate-600 text-lg mb-12 fade-up fade-up-2">Validated learning in web, cloud, database, and analytics domains</p>
 
         <div class="glass p-8 md:p-10 rounded-2xl shadow-xl border border-white/20 glow-hover fade-up fade-up-3">
-          <ul class="space-y-3 text-gray-300 leading-relaxed">
+          <ul class="space-y-3 text-slate-700 leading-relaxed">
             <li>- Web Development - IBM (Coursera)</li>
             <li>- Cloud Computing Basics - IBM (Coursera)</li>
             <li>- MongoDB Basics</li>
@@ -1187,18 +1217,18 @@
     <section class="py-24 px-6 md:px-20 relative" id="contact">
       <div class="max-w-7xl mx-auto fade-up fade-up-2">
         <h2 class="text-5xl md:text-6xl font-black gradient-text mb-6">Let's Connect</h2>
-        <p class="text-gray-300 text-lg max-w-2xl leading-relaxed mb-8">
+        <p class="text-slate-700 text-lg max-w-2xl leading-relaxed mb-8">
           Reach out through email or social profiles for opportunities, collaborations, or technical roles.
         </p>
 
         <div class="flex gap-4 flex-wrap mb-8">
-          <a href="mailto:dineshkarthickbca@gmail.com" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+          <a href="mailto:dineshkarthickbca@gmail.com" class="glass px-6 py-3 rounded-lg hover:shadow-emerald-500/50 transition inline-flex items-center gap-2 font-semibold">
             <i class="fas fa-envelope"></i> Email
           </a>
-          <a href="https://github.com/dineshkarthick-bca" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+          <a href="https://github.com/dineshkarthick-bca" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-emerald-500/50 transition inline-flex items-center gap-2 font-semibold">
             <i class="fab fa-github"></i> GitHub
           </a>
-          <a href="https://www.linkedin.com/in/dinesh-karthick-b-1j9u0l3y/" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-cyan-500/50 transition inline-flex items-center gap-2 font-semibold">
+          <a href="https://www.linkedin.com/in/dinesh-karthick-b-1j9u0l3y/" target="_blank" class="glass px-6 py-3 rounded-lg hover:shadow-emerald-500/50 transition inline-flex items-center gap-2 font-semibold">
             <i class="fab fa-linkedin"></i> LinkedIn
           </a>
         </div>
