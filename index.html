@@ -703,9 +703,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1.25rem;
-      padding: 2rem;
+      gap: clamp(0.75rem, 2vw, 1.5rem);
+      padding: clamp(1rem, 4vw, 3rem);
+      width: min(90vw, 900px);
       text-align: center;
+    }
+
+    .loader-mark {
+      display: flex;
+      align-items: center;
+      gap: clamp(2px, 1vw, 10px);
+      flex-wrap: nowrap;
     }
 
     .loader-mark {
@@ -714,11 +722,12 @@
       justify-content: center;
       flex-wrap: nowrap;
     }
+  
 
     .loader-mark svg {
       display: inline-block;
-      width: 4rem;
-      height: 4rem;
+      width: clamp(1.4rem, 5vw, 4rem);
+      height: clamp(1.4rem, 5vw, 4rem);
       filter: drop-shadow(0 0 18px rgba(255,179,0,0.2));
     }
 
@@ -808,37 +817,37 @@
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 6,6 L 20,58 L 32,26 L 44,58 L 58,6" class="dash" pathLength="360"></path>
         </svg>
 
-        <div class="w-2"></div>
+        
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 52,6 H 14 V 58 H 52 M 14,32 H 46" class="dash" pathLength="360"></path>
         </svg>
 
-        <div class="w-2"></div>
+        
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 16,6 V 58 H 52" class="dash" pathLength="360"></path>
         </svg>
 
-        <div class="w-2"></div>
+        
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 52,14 A 24,24 0 1,0 52,50" class="dash" pathLength="360"></path>
         </svg>
 
-        <div class="w-2"></div>
+        
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#c)" d="M 32,32 m 0,-26 a 26,26 0 1,1 0,52 a 26,26 0 1,1 0,-52" class="dash" pathLength="360"></path>
         </svg>
 
-        <div class="w-2"></div>
+        
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#d)" d="M 6,58 V 6 L 32,36 L 58,6 V 58" class="dash" pathLength="360"></path>
         </svg>
 
-        <div class="w-2"></div>
+        
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" height="64" width="64" class="inline-block" aria-hidden="true">
           <path stroke-linejoin="round" stroke-linecap="round" stroke-width="8" stroke="url(#b)" d="M 52,6 H 14 V 58 H 52 M 14,32 H 46" class="dash" pathLength="360"></path>
@@ -1243,8 +1252,8 @@
     // Keep the loading overlay visible for at least 5 seconds, with a 7 second hard cap.
     const loader = document.getElementById('site-loader');
     const loaderStartedAt = Date.now();
-    const minimumLoaderTime = 5000;
-    const maximumLoaderTime = 7000;
+    const minimumLoaderTime = 1800;
+    const maximumLoaderTime = 2000;
     let loaderDismissed = false;
 
     const hideLoader = () => {
